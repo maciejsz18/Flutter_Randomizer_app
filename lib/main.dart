@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:randomizer/randomizer_change_notifier.dart';
 import 'package:randomizer/range_selector_page.dart';
 
@@ -7,13 +7,15 @@ void main() {
   runApp(const AppWidget());
 }
 
+final randomizerProvider =
+    ChangeNotifierProvider((ref) => RandomizerChangeNotifier());
+
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => RandomizerChangeNotifier(),
+    return ProviderScope(
       child: MaterialApp(
         title: 'Randomizer',
         home: RangeSelectorPage(),
