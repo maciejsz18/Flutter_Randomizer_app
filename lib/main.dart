@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:randomizer/randomizer_change_notifier.dart';
 import 'package:randomizer/range_selector_page.dart';
 
 void main() {
@@ -8,12 +10,14 @@ void main() {
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Randomizer',
-      home: RangeSelectorPage(),
+    return ChangeNotifierProvider(
+      create: (context) => RandomizerChangeNotifier(),
+      child: MaterialApp(
+        title: 'Randomizer',
+        home: RangeSelectorPage(),
+      ),
     );
   }
 }
