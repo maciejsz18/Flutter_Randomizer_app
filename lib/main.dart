@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:randomizer/randomizer_change_notifier.dart';
+import 'package:randomizer/randomizer_state_notifier.dart';
 import 'package:randomizer/range_selector_page.dart';
 
 void main() {
@@ -8,7 +8,8 @@ void main() {
 }
 
 final randomizerProvider =
-    ChangeNotifierProvider((ref) => RandomizerChangeNotifier());
+    StateNotifierProvider<RandomizerStateNotifier, RandomizerState>(
+        (ref) => RandomizerStateNotifier());
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
